@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Share Your Inspirational Quotes</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #c2e9fb, #a1c4fd);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #4a90e2;
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: 2rem;
+    }
+
+    form {
+      background: white;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 500px;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    form button {
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .quotes {
+      margin: 2rem;
+      width: 90%;
+      max-width: 700px;
+    }
+
+    .quote {
+      background: #fff;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-left: 5px solid #4a90e2;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .quote span {
+      display: block;
+      text-align: right;
+      font-weight: bold;
+      margin-top: 0.5rem;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      margin-top: auto;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>💬 Share Your Inspirational Quotes</header>
+
+  <form id="quoteForm">
+    <textarea id="quoteText" placeholder="Enter your quote..." required></textarea>
+    <input type="text" id="quoteAuthor" placeholder="Your name or the author's name" required />
+    <button type="submit">Share Quote</button>
+  </form>
+
+  <div class="quotes" id="quoteList">
+    <!-- Shared quotes will appear here -->
+  </div>
+
+  <footer>
+    &copy; 2025 InspireHub | Share Positivity ✨
+  </footer>
+
+  <script>
+    const form = document.getElementById('quoteForm');
+    const quoteList = document.getElementById('quoteList');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const text = document.getElementById('quoteText').value.trim();
+      const author = document.getElementById('quoteAuthor').value.trim();
+
+      if (text && author) {
+        const quoteElement = document.createElement('div');
+        quoteElement.className = 'quote';
+        quoteElement.innerHTML = `
+          "${text}"
+          <span>– ${author}</span>
+        `;
+
+        quoteList.prepend(quoteElement); // add to top
+        form.reset();
+      }
+    });
+  </script>
+
+</body>
+</html>
